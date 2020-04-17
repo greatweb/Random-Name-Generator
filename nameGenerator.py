@@ -19,76 +19,90 @@ type_of_name = ''
 first_last_name = ''
 
 # Introduction to name generator
-print('--------------------------------------------------------------\nHello! This is a random name generator, please answer the following question to get your list of random names!\n--------------------------------------------------------------')
+print('--------------------------------------------------------------\nHello! This is a random name generator, please '
+      'answer the following question to get your list of random names!\n'
+      '--------------------------------------------------------------')
 
 # Gets number of names between 1 and 50,000
-while whileLoops == True:
-    input_v = input("(Disclaimer: When choosing over 5,000 it might take a while!)\nHow many names do you want?(1 - 50,000):")
+while whileLoops:
+    input_v = input("(Disclaimer: When choosing over 5,000 it might take a while!)\n"
+                    "How many names do you want?(1 - 50,000):")
     try:
         int(input_v)
         if int(input_v) in range(1, 50001):
             whileLoops = False
             continue
         else:
-            print("--------------------------------------------------------------\nPlease enter a number between 1 and 50,000")
+            print("--------------------------------------------------------------\n"
+                  "Please enter a number between 1 and 50,000"
+                  "\n--------------------------------------------------------------")
             continue
     except ValueError:
-        print("--------------------------------------------------------------\nPlease enter a number between 1 and 50,000")
+        print("--------------------------------------------------------------\n"
+              "Please enter a number between 1 and 50,000"
+              "\n--------------------------------------------------------------")
         continue
 num_of_names = int(input_v)
 whileLoops = True
 
 
 # Gets  type of name
-while whileLoops == True:
-    input_v = input("--------------------------------------------------------------\nWhat type of name do you want?(real, fantasy, or username)")
+while whileLoops:
+    input_v = input("--------------------------------------------------------------\n"
+                    "What type of name do you want?(real, fantasy, or username)")
     try:
         if any(str(input_v).lower() == type_name for type_name in ["real", "fantasy", "username"]):
             whileLoops = False
             continue
     except Exception:
-        print("--------------------------------------------------------------\nPlease enter either real, fantasy, or username")
+        print("--------------------------------------------------------------\n"
+              "Please enter either real, fantasy, or username")
         continue
 type_of_name = input_v
 whileLoops = True
 
-
-# Gets gender
-if type_of_name == "real":
-    while whileLoops == True:
-        input_v = input("--------------------------------------------------------------\nWhat gender?(male, female, or both)")
-        try:
-            if any(str(input_v).lower() == gender for gender in ["male", "female", "both"]):
-                whileLoops = False
-                continue
-        except Exception:
-            print("--------------------------------------------------------------\nPlease enter either male, female, or both")
-            continue
-gender = input_v
-whileLoops = True
-
-
 # Gets first or last name, or both
 if any(type_of_name == type_name for type_name in ["real"]):
     if num_of_names < 1001:
-        while whileLoops == True:
-            input_v = input("--------------------------------------------------------------\nDo you want first or last names, or both?(first, last, both)")
+        while whileLoops:
+            input_v = input("--------------------------------------------------------------\n"
+                            "Do you want first or last names, or both?(first, last, both)")
             try:
                 if any(str(input_v).lower() == type_name for type_name in ["first", "last", "both"]):
                     whileLoops = False
                     continue
             except Exception:
-                print("--------------------------------------------------------------\nPlease enter either first or last, or both")
+                print("--------------------------------------------------------------\n"
+                      "Please enter either first or last, or both")
                 continue
     else:
         input_v = "both"
 first_last_name = input_v
 whileLoops = True
 
+# Gets gender
+if type_of_name == "real":
+    while whileLoops:
+        if first_last_name != "last":
+            input_v = input("--------------------------------------------------------------\n"
+                            "What gender?(male, female, or both)")
+            try:
+                if any(str(input_v).lower() == gender for gender in ["male", "female", "both"]):
+                    whileLoops = False
+                    continue
+            except Exception:
+                print("--------------------------------------------------------------\n"
+                      "Please enter either male, female, or both")
+                continue
+        else:
+            input_v = "male"
+gender = input_v
+whileLoops = True
+
 # Put names into a list
 for i in range(1, num_of_names + 1):
     whileLoops = True
-    while whileLoops == True:
+    while whileLoops:
         if type_of_name == "real":
             if gender == "male":
                 if first_last_name == "first":
@@ -167,8 +181,9 @@ whileLoops = True
 i = 0
 
 # Copy and paste?
-while whileLoops == True:
-    copyandpaste = input("--------------------------------------------------------------\nAre you going to copy and paste this list?(y/n)")
+while whileLoops:
+    copyandpaste = input("--------------------------------------------------------------\n"
+                         "Are you going to copy and paste this list?(y/n)")
     try:
         if any(copyandpaste == yesorno for yesorno in ["y","n","yes","no"]):
             whileLoops = False
