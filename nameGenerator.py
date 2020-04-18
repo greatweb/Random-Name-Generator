@@ -217,23 +217,28 @@ while whileLoops:
 # Put names into text file if selected
 overwrite = True
 while overwrite:
-    new_file = input("What do you want to name the file?")
+    new_file = input("--------------------------------------------------------------\n"
+                     "What do you want to name the file?")
     try:
-        open(f'{new_file}.txt', 'x')
-        new_file = open(f'{new_file}.txt', 'w+')
+        open(f'Text Files/{new_file}.txt', 'x')
+        new_file = open(f'Text Files/{new_file}.txt', 'w+')
         overwrite = False
         continue
     except Exception:
         whileLoops = True
         while whileLoops:
-            overwrite_file = input('This file already exists! Do you want to overwrite it?(y/n)')
+            overwrite_file = input('--------------------------------------------------------------\n'
+                                   'This file already exists! Do you want to overwrite it?(y/n)')
+
             if any(overwrite_file == c for c in ["y", "yes"]):
-                new_file = open(f'{new_file}.txt', 'w+')
+                new_file = open(f'Text Files/{new_file}.txt', 'w+')
                 whileLoops = False
                 overwrite = False
                 continue
             elif any(overwrite_file == d for d in ["n", "no"]):
-                print("Please think of a different name for your file!")
+                print("Please think of a different name for your file!\n"
+                      "--------------------------------------------------------------")
+                whileLoops = False
                 continue
             else:
                 continue
